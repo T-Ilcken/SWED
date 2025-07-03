@@ -3,23 +3,21 @@ package fra.uas.swed.TI.ex4;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.io.IOException;
 
 public class WebsiteCheckerText implements WebsiteChecker {
-    private String content;
 
     public WebsiteCheckerText() {
-        content = "";
+
     }
 
     @Override
-    public Boolean compareContent(Document doc) {
-        String newContent = doc.text();
+    public Boolean compareContent(Document content,Document newContent) {
+        String text1 = content.text();
+        String text2 = newContent.text();
         Boolean r = true;
-        if (!newContent.equals(content)) {
-            r= false;
+        if (!text1.equals(text2)) {
+            r = false;
         }
-        content = newContent;
         return r;
     }
 }

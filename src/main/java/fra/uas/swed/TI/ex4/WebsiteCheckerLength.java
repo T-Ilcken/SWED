@@ -6,22 +6,21 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 public class WebsiteCheckerLength implements WebsiteChecker {
-    private int contentLength;
 
     public WebsiteCheckerLength() {
-        contentLength = 0;
+
     }
 
 
 
     @Override
-    public Boolean compareContent(Document doc) {
-        int newContent = doc.html().length();
+    public Boolean compareContent(Document content,Document newContent) {
+        int newContentLength = newContent.html().length();
+        int contentLength = content.html().length();
         Boolean r = true;
-        if (newContent != contentLength) {
+        if (newContentLength != contentLength) {
             r = false;
         }
-        contentLength = newContent;
         return r;
     }
 }

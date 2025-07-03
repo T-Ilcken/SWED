@@ -3,20 +3,19 @@ package fra.uas.swed.TI.ex4;
 import org.jsoup.nodes.Document;
 
 public class WebsiteCheckerHTML implements WebsiteChecker {
-    private String content;
 
     public WebsiteCheckerHTML() {
-        content = "";
+
     }
 
 
-    public Boolean compareContent(Document doc){
-        String newContent = doc.html();
+    public Boolean compareContent(Document content,Document newContent){
+        String html1 = content.html();
+        String html2 = newContent.html();
         Boolean r = true;
-        if (!newContent.equals(content)) {
+        if (!html1.equals(html2)) {
             r= false;
         }
-        content = newContent;
         return r;
     }
 

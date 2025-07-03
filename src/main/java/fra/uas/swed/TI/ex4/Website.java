@@ -11,6 +11,7 @@ public class Website implements Subject{
     private String url;
     private WebsiteChecker checker;
     private List<Observer> subscriptions = new ArrayList<Observer>();
+    private Document content;
     private Thread thread;
 
     public Website(String url) {
@@ -60,9 +61,10 @@ public class Website implements Subject{
         String newContent = "";
         try {
             Document doc = Jsoup.connect(website.getURL()).get();
-            if(checker.compareContent(doc)){
+            if(!checker.compareContent(content,doc)){
                 notifyObservers();
             }
+            content = doc;
         }catch (IOException e){
             e.printStackTrace();
         }

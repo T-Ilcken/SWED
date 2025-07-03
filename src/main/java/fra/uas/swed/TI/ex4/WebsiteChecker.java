@@ -4,7 +4,7 @@ import org.jsoup.nodes.Document;
 
 public interface WebsiteChecker {
 
-    public Boolean compareContent(Document doc);
+    public Boolean compareContent(Document doc1,Document doc2);
 
 
 }
